@@ -1,0 +1,56 @@
+@import 'tailwindcss';
+
+@theme {
+  /* Flat design palette - "industrial slate + stock green" */
+  --color-canvas: #f8fafc;
+  --color-surface: #ffffff;
+  --color-ink: #0f172a;
+  --color-muted: #475569;
+  --color-line: #e6e8ea;
+  --color-accent: #047857;
+  --color-accent-hover: #065f46;
+  --color-primary: #334155;
+  --color-danger: #dc2626;
+
+  --font-display: 'Rubik', ui-sans-serif, system-ui, sans-serif;
+  --font-body: 'Nunito Sans', ui-sans-serif, system-ui, sans-serif;
+}
+
+@layer base {
+  html {
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    @apply bg-canvas font-body text-ink antialiased;
+    /* Vuốt ngang trên mobile không được phép xuất hiện */
+    overflow-x: hidden;
+  }
+
+  h1,
+  h2,
+  h3 {
+    @apply font-display;
+  }
+
+  :focus-visible {
+    @apply outline-2 outline-offset-2 outline-ink;
+  }
+}
+
+@layer components {
+  /* Skeleton dùng chung cho cả khu vực danh mục và sản phẩm */
+  .skeleton {
+    @apply animate-pulse rounded-lg bg-line/70;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
